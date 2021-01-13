@@ -20,14 +20,16 @@ async function execute(setGlobeLabels) {
   const data = await executeQuery(countriesQuery);
   const bindings = data.results.bindings;
   const globeLabels = parseCountriesIntoObjects(bindings);
+  console.warn(globeLabels);
   setGlobeLabels(globeLabels);
 }
 
 function parseCountriesIntoObjects(bindings) {
   const arr = [];
   for (const obj of bindings) {
-    const longitude = obj.cords.value.replace( /[^\d\.\ ]*/g, '').split(" ")[0];
-    const latitude = obj.cords.value.replace( /[^\d\.\ ]*/g, '').split(" ")[1];
+    console.warn(obj.cords.value, obj.countryLabel.value);
+    const longitude = obj.cords.value.replace( /[^\d. -]*/g, '').split(" ")[0];
+    const latitude = obj.cords.value.replace( /[^\d. -]*/g, '').split(" ")[1];
     arr.push({
       properties: {
         longitude,
