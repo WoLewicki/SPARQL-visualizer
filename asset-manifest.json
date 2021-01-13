@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/sparql-visualizer/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/sparql-visualizer/static/js/main.32076d4a.chunk.js",
-    "main.js.map": "/sparql-visualizer/static/js/main.32076d4a.chunk.js.map",
+    "main.js": "/sparql-visualizer/static/js/main.ef7e217f.chunk.js",
+    "main.js.map": "/sparql-visualizer/static/js/main.ef7e217f.chunk.js.map",
     "runtime-main.js": "/sparql-visualizer/static/js/runtime-main.a674e3c0.js",
     "runtime-main.js.map": "/sparql-visualizer/static/js/runtime-main.a674e3c0.js.map",
     "static/js/2.da3340b8.chunk.js": "/sparql-visualizer/static/js/2.da3340b8.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.a674e3c0.js",
     "static/js/2.da3340b8.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.32076d4a.chunk.js"
+    "static/js/main.ef7e217f.chunk.js"
   ]
 }
