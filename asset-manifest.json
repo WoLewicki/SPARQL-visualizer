@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/sparql-visualizer/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/sparql-visualizer/static/js/main.ef7e217f.chunk.js",
-    "main.js.map": "/sparql-visualizer/static/js/main.ef7e217f.chunk.js.map",
+    "main.js": "/sparql-visualizer/static/js/main.60d0a9dc.chunk.js",
+    "main.js.map": "/sparql-visualizer/static/js/main.60d0a9dc.chunk.js.map",
     "runtime-main.js": "/sparql-visualizer/static/js/runtime-main.a674e3c0.js",
     "runtime-main.js.map": "/sparql-visualizer/static/js/runtime-main.a674e3c0.js.map",
-    "static/js/2.da3340b8.chunk.js": "/sparql-visualizer/static/js/2.da3340b8.chunk.js",
-    "static/js/2.da3340b8.chunk.js.map": "/sparql-visualizer/static/js/2.da3340b8.chunk.js.map",
+    "static/js/2.ed6d6bd6.chunk.js": "/sparql-visualizer/static/js/2.ed6d6bd6.chunk.js",
+    "static/js/2.ed6d6bd6.chunk.js.map": "/sparql-visualizer/static/js/2.ed6d6bd6.chunk.js.map",
     "static/js/3.e8ada6d5.chunk.js": "/sparql-visualizer/static/js/3.e8ada6d5.chunk.js",
     "static/js/3.e8ada6d5.chunk.js.map": "/sparql-visualizer/static/js/3.e8ada6d5.chunk.js.map",
     "index.html": "/sparql-visualizer/index.html",
     "static/css/main.8c8b27cf.chunk.css.map": "/sparql-visualizer/static/css/main.8c8b27cf.chunk.css.map",
-    "static/js/2.da3340b8.chunk.js.LICENSE.txt": "/sparql-visualizer/static/js/2.da3340b8.chunk.js.LICENSE.txt"
+    "static/js/2.ed6d6bd6.chunk.js.LICENSE.txt": "/sparql-visualizer/static/js/2.ed6d6bd6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a674e3c0.js",
-    "static/js/2.da3340b8.chunk.js",
+    "static/js/2.ed6d6bd6.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.ef7e217f.chunk.js"
+    "static/js/main.60d0a9dc.chunk.js"
   ]
 }
