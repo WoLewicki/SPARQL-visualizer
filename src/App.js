@@ -1,46 +1,8 @@
 import React from 'react';
 import './App.css';
 import Globe from 'react-globe.gl';
-import {executeQuery} from './utils/wikidata';
-
-const countriesQuery = 
-`
-SELECT DISTINCT ?countryLabel ?population ?cords
-{
-  ?country wdt:P31 wd:Q6256 ;
-           wdt:P1082 ?population ;
-           wdt:P625 ?cords.
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
-}
-GROUP BY ?population ?countryLabel ?cords
-ORDER BY DESC(?population)
-`;
-
-async function execute(setGlobeLabels) {
-  const data = await executeQuery(countriesQuery);
-  const bindings = data.results.bindings;
-  const globeLabels = parseCountriesIntoObjects(bindings);
-  console.warn(globeLabels);
-  setGlobeLabels(globeLabels);
-}
-
-function parseCountriesIntoObjects(bindings) {
-  const arr = [];
-  for (const obj of bindings) {
-    console.warn(obj.cords.value, obj.countryLabel.value);
-    const longitude = obj.cords.value.replace( /[^\d. -]*/g, '').split(" ")[0];
-    const latitude = obj.cords.value.replace( /[^\d. -]*/g, '').split(" ")[1];
-    arr.push({
-      properties: {
-        longitude,
-        latitude,
-        name: obj.countryLabel.value,
-        pop_max: obj.population.value,
-      }
-    })
-  }
-  return arr;
-}
+import {countriesQuery, antoineQuery} from './utils/queries';
+import {execute} from './utils/queryParser';
 
 function App() {
   const [globeLabels, setGlobeLabels] = React.useState([]);
@@ -50,7 +12,8 @@ function App() {
       <header className="App-header">
         <div style={styles.splitScreen}>
           <div style={styles.leftPane}>
-            <button color='primary' onClick={() => execute(setGlobeLabels)} block>Search</button>
+            <button color='primary' onClick={() => execute(setGlobeLabels, countriesQuery)} block>Show populations of the World</button>
+            <button color='primary' onClick={() => execute(setGlobeLabels, antoineQuery)} block>Show birthplace of people with name Antoine</button>
           </div>
           <div style={styles.rightPane}>
             <Globe
@@ -61,7 +24,7 @@ function App() {
               labelLat={d => d.properties.latitude}
               labelLng={d => d.properties.longitude}
               labelText={d => d.properties.name}
-              labelSize={d => Math.sqrt(d.properties.pop_max) * 0.00005}
+              labelSize={d => Math.sqrt(d.properties.pop_max) * 0.0001}
               labelDotRadius={d => Math.sqrt(d.properties.pop_max) * 0.00005}
               labelColor={() => 'rgba(255, 165, 0, 0.75)'}
               labelResolution={2}
@@ -82,6 +45,8 @@ const styles = {
   },
   leftPane: {
       width: '50%',
+      display: 'flex',
+      flexDirection: 'column',
   },
   rightPane: {
       width: '50%',
