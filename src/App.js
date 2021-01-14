@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Globe from 'react-globe.gl';
-import {countriesQuery, antoineQuery} from './utils/queries';
+import {countriesQuery, antoineQuery, booksQuery, maxBillQuery, airAccidentsQuery} from './utils/queries';
 import {execute} from './utils/queryParser';
 
 function App() {
@@ -14,6 +14,9 @@ function App() {
           <div style={styles.leftPane}>
             <button color='primary' onClick={() => execute(setGlobeLabels, countriesQuery)} block>Show populations of the World</button>
             <button color='primary' onClick={() => execute(setGlobeLabels, antoineQuery)} block>Show birthplace of people with name Antoine</button>
+            <button color='primary' onClick={() => execute(setGlobeLabels, booksQuery)} block>Show books query</button>
+            <button color='primary' onClick={() => execute(setGlobeLabels, maxBillQuery)} block>Show max bill query</button>
+            <button color='primary' onClick={() => execute(setGlobeLabels, airAccidentsQuery)} block>Show air accidents query</button>
           </div>
           <div style={styles.rightPane}>
             <Globe

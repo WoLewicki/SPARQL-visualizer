@@ -17,7 +17,7 @@ function parseCountriesIntoObjects(bindings) {
       properties: {
         longitude,
         latitude,
-        name: obj?.countryLabel?.value || `${obj?.itemLabel?.value} - ${obj?.placeName?.value}`,
+        name: obj?.countryLabel?.value  || obj?.label?.value || `${obj?.itemLabel?.value} - ${obj?.placeName?.value || obj?.placeLabel?.value}`,
         pop_max: obj?.population?.value || 100000,
       }
     })
