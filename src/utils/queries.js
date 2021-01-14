@@ -1,5 +1,5 @@
-export const countriesQuery = 
-`
+export const countriesQuery =
+    `
 SELECT DISTINCT ?countryLabel ?population ?cords
 {
   ?country wdt:P31 wd:Q6256 ;
@@ -11,8 +11,8 @@ GROUP BY ?population ?countryLabel ?cords
 ORDER BY DESC(?population)
 `;
 
-export const antoineQuery = 
-`
+export const antoineQuery =
+    `
 SELECT ?itemLabel ?cords ?placeName
 WHERE
 {
@@ -25,8 +25,8 @@ WHERE
 }
 LIMIT 250`;
 
-export const booksQuery = 
-`
+export const booksQuery =
+    `
 SELECT ?label ?cords
 WHERE
 {
@@ -43,8 +43,8 @@ WHERE
 LIMIT 250`;
 
 
-export const maxBillQuery = 
-`
+export const maxBillQuery =
+    `
 SELECT DISTINCT ?itemLabel ?countryLabel ?placeLabel (YEAR(?date) as ?year) ?cords
 WHERE
 {
@@ -58,10 +58,10 @@ WHERE
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" . }
 }
 ORDER BY ?itemLabel ?placeLabel
-`
+`;
 
 export const airAccidentsQuery =
-`
+    `
 SELECT ?label ?cords ?place
 WHERE
 {
@@ -69,4 +69,5 @@ WHERE
    ?subj wdt:P625 ?cords .
    ?subj rdfs:label ?label filter (lang(?label) = "en")
 }
-LIMIT=250`
+LIMIT 250
+`;
