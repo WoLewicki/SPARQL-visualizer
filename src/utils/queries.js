@@ -69,5 +69,4 @@ WHERE
    ?subj wdt:P625 ?cords .
    ?subj rdfs:label ?label filter (lang(?label) = "en")
 }
-LIMIT 250
-`;
+LIMIT 250`

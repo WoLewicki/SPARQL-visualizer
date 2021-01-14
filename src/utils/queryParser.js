@@ -1,6 +1,7 @@
 import {executeQuery} from './wikidata';
 
-export async function execute(setGlobeLabels, query) {
+export async function execute(setGlobeLabels, setCurrentQuery, query) {
+  setCurrentQuery(query);
   const data = await executeQuery(query);
   const bindings = data.results.bindings;
   const globeLabels = parseCountriesIntoObjects(bindings);
@@ -18,7 +19,7 @@ function parseCountriesIntoObjects(bindings) {
         longitude,
         latitude,
         name: obj?.countryLabel?.value  || obj?.label?.value || `${obj?.itemLabel?.value} - ${obj?.placeName?.value || obj?.placeLabel?.value}`,
-        pop_max: obj?.population?.value || 100000,
+        pop_max: obj?.population?.value || 1000000,
       }
     })
   }
