@@ -25,41 +25,6 @@ WHERE
 }
 LIMIT 250`;
 
-export const booksQuery =
-    `
-SELECT ?label ?cords
-WHERE
-{
-  VALUES ?type {wd:Q571 wd:Q7725634}  # book or literary work
-  ?item wdt:P31 ?type .
-  ?item wdt:P577 ?date FILTER (?date < "1830-01-01T00:00:00Z"^^xsd:dateTime) . # the date which user may manipulate 
-  ?item rdfs:label ?label filter (lang(?label) = "en")
-
-  OPTIONAL {
-    ?item (wdt:P291|wdt:P840) ?place .  # publication or narration place is ?place
-    ?place wdt:P625 ?cords
-  }
-}
-LIMIT 250`;
-
-
-export const maxBillQuery =
-    `
-SELECT DISTINCT ?itemLabel ?countryLabel ?placeLabel (YEAR(?date) as ?year) ?cords
-WHERE
-{
-  ?item wdt:P31/wdt:P279* wd:Q860861 .
-  ?item wdt:P170 wd:Q123454 .
-  OPTIONAL { ?item wdt:P17 ?country . }
-  OPTIONAL { ?item wdt:P131 ?place . }
-  ?item wdt:P571 ?date FILTER (?date > "1986-01-01T00:00:00Z"^^xsd:dateTime) . # the date which user may manipulate 
-  OPTIONAL { ?item wdt:P625 ?cords . }
-  OPTIONAL { ?item wdt:P18 ?image . }
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en" . }
-}
-ORDER BY ?itemLabel ?placeLabel
-`;
-
 export const airAccidentsQuery =
     `
 SELECT ?label ?cords ?place
@@ -70,3 +35,48 @@ WHERE
    ?subj rdfs:label ?label filter (lang(?label) = "en")
 }
 LIMIT 250`
+
+
+export function booksQuery(year) {
+  return (
+    `
+    SELECT ?label ?cords
+    WHERE
+    {
+      VALUES ?type {wd:Q571 wd:Q7725634}  # book or literary work
+      ?item wdt:P31 ?type .
+      ?item wdt:P577 ?date FILTER (?date < "`.concat(year).concat(`-01-01T00:00:00Z"^^xsd:dateTime) .
+      ?item rdfs:label ?label filter (lang(?label) = "en")
+
+      OPTIONAL {
+        ?item (wdt:P291|wdt:P840) ?place .  # publication or narration place is ?place
+        ?place wdt:P625 ?cords
+      }
+    }
+    LIMIT 250`)
+  )
+}
+
+
+export function maxBillQuery(year) {
+  return (
+    `
+    SELECT DISTINCT ?itemLabel ?countryLabel ?placeLabel (YEAR(?date) as ?year) ?cords
+    WHERE
+    {
+      ?item wdt:P31/wdt:P279* wd:Q860861 .
+      ?item wdt:P170 wd:Q123454 .
+      OPTIONAL { ?item wdt:P17 ?country . }
+      OPTIONAL { ?item wdt:P131 ?place . }
+      ?item wdt:P571 ?date FILTER (?date > "`.concat(year).concat(`-01-01T00:00:00Z"^^xsd:dateTime) .
+      OPTIONAL { ?item wdt:P625 ?cords . }
+      OPTIONAL { ?item wdt:P18 ?image . }
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "en" . }
+    }
+    ORDER BY ?itemLabel ?placeLabel
+    `)
+  )
+}
+
+
+

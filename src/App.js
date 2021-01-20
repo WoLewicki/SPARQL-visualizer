@@ -16,7 +16,8 @@ injectFonts(typography)
 function App() {
   const [globeLabels, setGlobeLabels] = React.useState([]);
   const [currentQuery, setCurrentQuery] = React.useState('');
-  const [counter, setCounter] = React.useState(50);
+  const [counter_booksQuery, setCounter_booksQuery] = React.useState(1000);
+  const [counter_maxBillQuery, setCounter_maxBillQuery] = React.useState(1000);
 
   return (
     <div className="App">
@@ -24,17 +25,37 @@ function App() {
         <div style={styles.splitScreen}>
           <div style={styles.leftPane}>
             <p>{currentQuery}</p>
-            <StyledSlider
-                defaultValue={counter}
-                renderTrack={Track}
-                renderThumb={Thumb}
-                onChange={val => setCounter(val)}
-            />
             <button color='primary' onClick={() => execute(setGlobeLabels, setCurrentQuery, countriesQuery)} block>Show populations of the World</button>
             <button color='primary' onClick={() => execute(setGlobeLabels, setCurrentQuery, antoineQuery)} block>Show birthplace of people with name Antoine</button>
-            <button color='primary' onClick={() => execute(setGlobeLabels, setCurrentQuery, booksQuery)} block>Show books query</button>
-            <button color='primary' onClick={() => execute(setGlobeLabels, setCurrentQuery, maxBillQuery)} block>Show max bill query</button>
             <button color='primary' onClick={() => execute(setGlobeLabels, setCurrentQuery, airAccidentsQuery)} block>Show air accidents query</button>
+            <br></br>
+            <br></br>
+            <center>
+              Year of books less than:
+            <StyledSlider
+                min={0}
+                max={2021}
+                defaultValue={counter_booksQuery}
+                renderTrack={Track}
+                renderThumb={Thumb}
+                onChange={val => setCounter_booksQuery(val)}
+                />
+            </center>
+            <button color='primary' onClick={() => execute(setGlobeLabels, setCurrentQuery, booksQuery(counter_booksQuery))} block>Show books query</button>
+            <br></br>
+            <br></br>
+            <center>
+              Year of Max Bill's works grater than:
+            <StyledSlider
+                min={1}
+                max={2021}
+                defaultValue={counter_maxBillQuery}
+                renderTrack={Track}
+                renderThumb={Thumb}
+                onChange={val => setCounter_maxBillQuery(val)}
+            />
+            </center>
+            <button color='primary' onClick={() => execute(setGlobeLabels, setCurrentQuery, maxBillQuery(counter_maxBillQuery))} block>Show max bill query</button>
           </div>
           <div style={styles.rightPane}>
             <Globe
