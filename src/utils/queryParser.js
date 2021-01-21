@@ -19,7 +19,7 @@ function parseCountriesIntoObjects(bindings) {
         longitude,
         latitude,
         name: obj?.countryLabel?.value  || obj?.label?.value || `${obj?.itemLabel?.value} - ${obj?.placeName?.value || obj?.placeLabel?.value}`,
-        pop_max: obj?.population?.value || 1000000,
+        pop_max: obj?.population?.value || 10000000,
       }
     })
   }
